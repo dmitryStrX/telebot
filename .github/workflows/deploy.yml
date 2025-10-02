@@ -2,7 +2,7 @@ name: Build and Deploy Telegram Bot
 
 on:
   push:
-    branches: [ "main" ] # Запускать при пуше в ветку main
+    branches: [ "master" ] # Запускать при пуше в ветку main
 
 jobs:
   build-and-push:
