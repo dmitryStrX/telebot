@@ -10,9 +10,10 @@ logging.basicConfig(
 
 # Функция для команды /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_name = update.effective_user.first_name
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
-        text="Привет! Я эхо-бот. Просто отправь мне любое сообщение, и я его повторю."
+        text=f"Привет, {user_name}! Я эхо-бот. Просто отправь мне любое сообщение, и я его повторю."
     )
 
 # Функция, которая будет "отзеркаливать" сообщения
