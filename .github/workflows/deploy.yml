@@ -53,5 +53,5 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         script: |
           cd /home/dmitryx/docker-projects/telebot
-          docker pull ghcr.io/${{ github.repository }}:latest
+          docker pull ghcr.io/dmitrystrx/telebot:latest
           docker compose up -d
