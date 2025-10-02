@@ -21,7 +21,7 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_message = update.message.text
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
-        text=user_message
+        text=user_message + " (это эхо!)"
     )
 
 def main():
