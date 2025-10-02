@@ -52,6 +52,6 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          cd /opt/telegram-bot # Путь, где вы склонировали репозиторий
+          cd /home/dmitryx/docker-projects/telebot
           docker pull ghcr.io/${{ github.repository }}:latest
-          docker-compose up -d
+          docker compose up -d
