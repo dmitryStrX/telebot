@@ -22,15 +22,24 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
+    # Новый шаг для генерации метаданных (тегов и меток) в нижнем регистре
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: ghcr.io/${{ github.repository }}
+
+    # Измененный шаг сборки и пуша
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
         context: .
         push: true
-        tags: ghcr.io/${{ github.repository }}:latest
+        # Используем теги, сгенерированные на предыдущем шаге
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
         build-args: |
           BOT_TOKEN=${{ secrets.BOT_TOKEN }}
-
   deploy:
     needs: build-and-push # Запускать только после успешной сборки
     runs-on: ubuntu-latest
