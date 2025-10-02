@@ -28,6 +28,11 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: ghcr.io/${{ github.repository }}
+        tags: |
+          # Эта строка гарантирует создание тега 'latest' для ветки 'master'
+          type=raw,value=latest,enable=${{ github.ref == 'refs/heads/master' }}
+          # Также создаем тег с именем ветки (например, 'master')
+          type=ref,event=branch
 
     # Измененный шаг сборки и пуша
     - name: Build and push Docker image
