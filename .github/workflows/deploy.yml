@@ -54,4 +54,4 @@ jobs:
         script: |
           cd /home/dmitryx/docker-projects/telebot
           docker pull ghcr.io/dmitrystrx/telebot:latest
-          docker compose up -d
+          docker compose -f master-compose.yml up -d
